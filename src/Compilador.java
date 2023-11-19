@@ -84,7 +84,7 @@ public class Compilador {
         while (!operadores.empty()) {
             NodoOperador top = operadores.pop();
             if ((top.getPrecedence() <= no.getPrecedence() || (top instanceof NodoParentesis))
-                    && top.getPrecedence() != 3) {
+                    && top.getPrecedence() != 4) {
                 operadores.push(top);
                 break;
             } else {
@@ -98,7 +98,7 @@ public class Compilador {
         try {
             CompositeEA der = salida.pop();
             op.setDer(der);
-            if (op.getPrecedence() < 3) {
+            if (op.getPrecedence() < 4) {
                 CompositeEA izq = salida.pop();
                 op.setIzq(izq);
             }

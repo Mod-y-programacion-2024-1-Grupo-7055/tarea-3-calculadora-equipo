@@ -80,6 +80,10 @@ public abstract class NodoOperador implements CompositeEA{
     public String toString() {
         String operador = this instanceof NodoSuma ? " + "
                         : this instanceof NodoResta ? " - "
+                        : this instanceof NodoRaiz ? "sqrt"
+                        : this instanceof NodoCos ? "cos"
+                        : this instanceof NodoSin ? "sin"
+                        : this instanceof NodoTan ? "tan"
                         : this instanceof NodoMultiplicacion ? " * " : " / ";
 
         if (izq != null) {
@@ -105,7 +109,7 @@ public abstract class NodoOperador implements CompositeEA{
                     return new NodoSuma(null,null);
                 case "-":
                     NodoOperador o = new NodoResta(null,null);
-                    o.precedence=anteriorEsOperador? 3:0;
+                    o.precedence=anteriorEsOperador? 4:0;
                     return o;
                 case "*":
                     return new NodoMultiplicacion(null,null);
@@ -113,6 +117,22 @@ public abstract class NodoOperador implements CompositeEA{
                     return new NodoDivision(null,null);
                 case "(":
                     return new NodoParentesis();
+                case "sqrt":
+                    NodoOperador r = new NodoRaiz(null,null);
+                    r.precedence=anteriorEsOperador? 4:0;
+                    return r;
+                case "cos":
+                    NodoOperador c = new NodoCos(null,null);
+                    c.precedence=anteriorEsOperador? 4:0;
+                    return c;
+                case "tan":
+                    NodoOperador t = new NodoTan(null,null);
+                    t.precedence=anteriorEsOperador? 4:0;
+                    return t;
+                case "sin":
+                    NodoOperador ch = new NodoSin(null,null);
+                    ch.precedence=anteriorEsOperador? 4:0;
+                    return ch;
                 default:
                     throw new ErrorDeSintaxisException("Error de Sintáxis");
             }

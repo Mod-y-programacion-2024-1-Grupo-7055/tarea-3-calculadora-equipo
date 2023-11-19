@@ -16,7 +16,7 @@ public class NodoParentesis extends NodoOperador {
      */
     public NodoParentesis() {
         super();
-        precedence = 2;
+        precedence = 3;
     }
 
     /**
