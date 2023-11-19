@@ -73,25 +73,6 @@ public class Calculadora implements ActionListener {
         textField.setHorizontalAlignment(SwingConstants.RIGHT);
         frame.add(textField);
 
-        
-        onRadioButton.setBounds(10, 95, 60, 40);
-        onRadioButton.setSelected(true);
-        onRadioButton.setFont(new Font("Arial", Font.BOLD, 14));
-        onRadioButton.setBackground(Color.black);
-        onRadioButton.setForeground(Color.white);
-        frame.add(onRadioButton);
-
-        offRadioButton.setBounds(10, 120, 60, 40);
-        offRadioButton.setSelected(false);
-        offRadioButton.setFont(new Font("Arial", Font.BOLD, 14));
-        offRadioButton.setBackground(Color.black);
-        offRadioButton.setForeground(Color.white);
-        frame.add(offRadioButton);
-
-        ButtonGroup buttonGroup = new ButtonGroup();
-        buttonGroup.add(onRadioButton);
-        buttonGroup.add(offRadioButton);
-        
         buttonSeven.setBounds(10, 230, 60, 40);
         buttonSeven.setFont(new Font("Arial", Font.BOLD, 20));
         frame.add(buttonSeven);
@@ -206,8 +187,6 @@ public class Calculadora implements ActionListener {
     }
 
     public void addActionEvent() {
-        onRadioButton.addActionListener(this);
-        offRadioButton.addActionListener(this);
         buttonClear.addActionListener(this);
         buttonDelete.addActionListener(this);
         buttonDiv.addActionListener(this);
@@ -239,11 +218,7 @@ public class Calculadora implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e){
         Object source = e.getSource();
-        if (source == onRadioButton) {
-            enable();
-        } else if (source == offRadioButton) {
-            disable();
-        } else if (source == buttonClear) {
+        if (source == buttonClear) {
             label.setText("");
             textField.setText("");
         } else if (source == buttonDelete) {
@@ -331,64 +306,7 @@ public class Calculadora implements ActionListener {
             textField.setText(Double.toString(resultado));
             } catch (ErrorDeSintaxisException a){
                 System.out.println("Errror");
-            }
-            
+            }    
         }
     } 
-    
-     private void enable() {
-        onRadioButton.setEnabled(false);
-        offRadioButton.setEnabled(true);
-        textField.setEnabled(true);
-        label.setEnabled(true);
-        buttonClear.setEnabled(true);
-        buttonDelete.setEnabled(true);
-        buttonDiv.setEnabled(true);
-        buttonSqrt.setEnabled(true);
-        buttonMinus.setEnabled(true);
-        buttonSeven.setEnabled(true);
-        buttonEight.setEnabled(true);
-        buttonNine.setEnabled(true);
-        buttonMul.setEnabled(true);
-        buttonFour.setEnabled(true);
-        buttonFive.setEnabled(true);
-        buttonSix.setEnabled(true);
-        buttonPlus.setEnabled(true);
-        buttonOne.setEnabled(true);
-        buttonTwo.setEnabled(true);
-        buttonThree.setEnabled(true);
-        buttonEqual.setEnabled(true);
-        buttonZero.setEnabled(true);
-        buttonDot.setEnabled(true);
-        buttonPIzq.addActionListener(this);
-        buttonPDer.addActionListener(this);
-    }
-
-    private void disable() {
-        onRadioButton.setEnabled(true);
-        offRadioButton.setEnabled(false);
-        textField.setText("");
-        label.setText(" ");
-        buttonClear.setEnabled(false);
-        buttonDelete.setEnabled(false);
-        buttonDiv.setEnabled(false);
-        buttonSqrt.setEnabled(false);
-        buttonMinus.setEnabled(false);
-        buttonSeven.setEnabled(false);
-        buttonEight.setEnabled(false);
-        buttonNine.setEnabled(false);
-        buttonMul.setEnabled(false);
-        buttonFour.setEnabled(false);
-        buttonFive.setEnabled(false);
-        buttonSix.setEnabled(false);
-        buttonPlus.setEnabled(false);
-        buttonOne.setEnabled(false);
-        buttonTwo.setEnabled(false);
-        buttonThree.setEnabled(false);
-        buttonEqual.setEnabled(false);
-        buttonZero.setEnabled(false);
-        buttonDot.setEnabled(false);
-        buttonPIzq.addActionListener(this);
-        buttonPDer.addActionListener(this);
-    }    
 }
